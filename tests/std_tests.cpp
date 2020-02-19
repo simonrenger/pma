@@ -2,7 +2,7 @@
 
 #include <EASTL/vector.h>
 
-
+#include <memory>
 
 class monotonic : public pma::allocation_strategy{
       public:
@@ -24,7 +24,6 @@ class monotonic : public pma::allocation_strategy{
 };
 
 int main() {
-
   unsigned char data[1024]{};
   unsigned char fixedData[2024]{};
   monotonic monotonic_a{data,1024};
