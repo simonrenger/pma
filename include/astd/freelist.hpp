@@ -4,7 +4,7 @@
 #include <pma/allocation_strategy.hpp>
 namespace astd{
     class freelist : public pma::allocation_strategy{
-        NO_DISCARD  virtual void* do_allocate(const std::size_t count, const std::size_t aligment) final {
+        NO_DISCARD  virtual void* do_allocate(const std::size_t size, const std::size_t aligment) final {
             // impl
             return nullptr;
         }
