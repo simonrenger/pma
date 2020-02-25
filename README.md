@@ -15,8 +15,6 @@ This is the resource repositry for my memory managment lecture seires at Breda u
 - [CppCon 2017: Bob Steagall “How to Write a Custom Allocator”](https://www.youtube.com/watch?v=kSWfushlvB8)
 - [CppCon 2015: Andrei Alexandrescu “std::allocator...”](https://www.youtube.com/watch?v=LIb3L4vKZ7U)
 - [Taming Dynamic Memory - An Introduction to Custom Allocators - Andreas Weis [ACCU 2019]](https://www.youtube.com/watch?v=IGtKstxNe14)
-- [CppCon 2019: Timur Doumler “Type punning in modern C++”](https://www.youtube.com/watch?v=_qzMpk-22cc)
-- [C++ Weekly - Ep 185 - Stop Using reinterpret_cast!](https://www.youtube.com/watch?v=L06nbZXD2D0)
 - [C++Now Michael Spencer. Alignment in C++: Use, Limitations, and Extension](https://youtu.be/uSZFrmhayIM)
 - [Alisdair Meredith. Making Allocators Work. CppCon, 2014. Part1](http://youtu.be/YkiYOP3d64E)
 - [Alisdair Meredith. Making Allocators Work. CppCon 2014. Part2](http://youtu.be/Q5kyiFevMJQ)
@@ -29,10 +27,12 @@ This is the resource repositry for my memory managment lecture seires at Breda u
 - [C++Now 2018 Arthur O’Dwyer. An Allocator is a Handle to a Heap.](https://youtu.be/0MdSJsCTRkY)
 - [CppCon 2015: Scott Wardle “Memory and C++ debugging at Electronic Arts"](https://www.youtube.com/watch?v=8KIvWJUYbDA) *EASTL* related
 
-## Related talks
+## Related talks (important)
 
 - [C++Now 2019: Arthur O'Dwyer “Trivially Relocatable”](https://www.youtube.com/watch?v=SGdfPextuAU&t=312s)
 - [https://www.youtube.com/watch?v=Nz9SiF0QVKY](https://www.youtube.com/watch?v=Nz9SiF0QVKY)
+- [CppCon 2019: Timur Doumler “Type punning in modern C++”](https://www.youtube.com/watch?v=_qzMpk-22cc)
+- [C++ Weekly - Ep 185 - Stop Using reinterpret_cast!](https://www.youtube.com/watch?v=L06nbZXD2D0)
 
 ## Mixed stuff
 
