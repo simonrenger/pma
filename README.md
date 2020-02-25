@@ -20,7 +20,7 @@ This is the resource repositry for my memory managment lecture seires at Breda u
 - [C++Now Michael Spencer. Alignment in C++: Use, Limitations, and Extension](https://youtu.be/uSZFrmhayIM)
 - [Alisdair Meredith. Making Allocators Work. CppCon, 2014. Part1](http://youtu.be/YkiYOP3d64E)
 - [Alisdair Meredith. Making Allocators Work. CppCon 2014. Part2](http://youtu.be/Q5kyiFevMJQ)
-- [Alisdair Meredith. Allocators in C++11. C++Now May 2013](ttps://youtu.be/v7B_8IbHjxA)
+- [Alisdair Meredith. Allocators in C++11. C++Now May 2013](https://youtu.be/v7B_8IbHjxA)
 - [Alisdair Meredith. An allocator model for std2. CppCon Sept. 25, 2017](https://youtu.be/oCi_QZ6K_qk) *about the evolvment of the allocators from C++98 to C++17
 - [C++Now 2017: Bob Steagall “Testing the Limits of Allocator Awareness"](https://www.youtube.com/watch?v=fmJfKm9ano8&feature=youtu.be) - how to test your allocator
 - [Pablo Halpern. Modern Allocators: The Good Parts. CppCon](https://youtu.be/v3dz-AKOVL8) Gives a simple example for polymorpic allocators
