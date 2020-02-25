@@ -27,4 +27,13 @@ This is the resource repositry for my memory managment lecture seires at Breda u
 - [CppCon 2017 Sergey Zubkov. From Security to Performance to GPU Programming: Exploring Modern Allocators](https://youtu.be/HdQ4aOZyuHw)
 - [CppCon 2014 Stephan Lavavej. STL Features and Implementation Techniques](https://youtu.be/dTeKf5Oek2c)
 - [C++Now 2018 Arthur O’Dwyer. An Allocator is a Handle to a Heap.](https://youtu.be/0MdSJsCTRkY)
--
+- [CppCon 2015: Scott Wardle “Memory and C++ debugging at Electronic Arts"](https://www.youtube.com/watch?v=8KIvWJUYbDA) *EASTL* related
+
+## Related talks
+
+- [C++Now 2019: Arthur O'Dwyer “Trivially Relocatable”](https://www.youtube.com/watch?v=SGdfPextuAU&t=312s)
+- [https://www.youtube.com/watch?v=Nz9SiF0QVKY](https://www.youtube.com/watch?v=Nz9SiF0QVKY)
+
+## Mixed stuff
+
+- [EASTL Gitter Chat](https://gitter.im/electronicarts/EASTL)
