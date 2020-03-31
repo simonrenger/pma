@@ -13,7 +13,11 @@ target_include_directories(pma
 
 # target_link_libraries(pma PUBLIC EASTL)
 if(BUILD_17)
+    message ( STATUS "pma build with c++17")
+    target_compile_options(pma PUBLIC /Zc:__cplusplus)
     target_compile_features(pma PUBLIC cxx_std_17)
 else()
+    message ( STATUS "pma build with c++14")
+    target_compile_options(pma PUBLIC /Zc:__cplusplus)
     target_compile_features(pma PUBLIC cxx_std_14)
 endif()
