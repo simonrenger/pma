@@ -6,7 +6,6 @@ namespace astd{
     class monotonic : public pma::allocation_strategy{
         void* start_ptr{ nullptr };
         std::size_t head{ 0 };
-        std::size_t max_size{ 0 };
     protected:
         NO_DISCARD  virtual void* do_allocate(const std::size_t count, const std::size_t aligment) final;
         virtual void do_deallocate(void* const ptr, const std::size_t count) final;

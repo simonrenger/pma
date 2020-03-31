@@ -3,11 +3,11 @@
 
 #include <cstdlib>
 
-astd::monotonic::monotonic(std::size_t max_size, pma::allocation_strategy* const upstream) :allocation_strategy{ {max_size},upstream }, max_size{ max_size }{
+astd::monotonic::monotonic(std::size_t max_size, pma::allocation_strategy* const upstream) :allocation_strategy{ {max_size},upstream }{
     start_ptr = std::malloc(max_size);
 }
-astd::monotonic::monotonic(pma::alloc_option option,pma::allocation_strategy * const upstream) :allocation_strategy{ option,upstream }, max_size{ option.buffer_size }{
-    start_ptr = std::malloc(max_size);
+astd::monotonic::monotonic(pma::alloc_option option,pma::allocation_strategy * const upstream) :allocation_strategy{ option,upstream }{
+    start_ptr = std::malloc(option.buffer_size);
 }
 
 NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, const std::size_t alignment) {
@@ -18,7 +18,7 @@ NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, const std:
     if (alignment != 0 && head % alignment != 0) {
         padding = pma::alignForwardAdjustment(currentAddress, alignment);
     }
-    if (head + padding + size > max_size) {
+    if (head + padding + size > option().buffer_size) {
         return nullptr;
     }
     head += padding;
