@@ -11,7 +11,7 @@ target_include_directories(pma
     PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     )
 
-target_link_libraries(pma PUBLIC EASTL)
+# target_link_libraries(pma PUBLIC EASTL)
 if(BUILD_17)
     target_compile_features(pma PUBLIC cxx_std_17)
 else()

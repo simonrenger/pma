@@ -6,11 +6,11 @@ project(pma VERSION 0.0.1 DESCRIPTION "A great new project")
 
 
 option(BUILD_TESTING "Build tests" ON)
-option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_17 "Build examples" OFF)
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_17 "With 17" OFF)
 
 # Include third-party components we need for the build
-add_subdirectory(third_party/EASTL)
+# add_subdirectory(third_party/EASTL)
 
 add_subdirectory(src)
 

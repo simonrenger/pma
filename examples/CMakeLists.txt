@@ -1,3 +1,3 @@
 add_executable(example1 example1.cpp)
 
-target_link_libraries(example1 PRIVATE pma::pma EASTL)
+target_link_libraries(example1 PRIVATE pma::pma)
