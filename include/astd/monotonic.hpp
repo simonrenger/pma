@@ -4,13 +4,17 @@
 #include <pma/allocation_strategy.hpp>
 namespace astd{
     class monotonic : public pma::allocation_strategy{
-        NO_DISCARD  virtual void* do_allocate(const std::size_t count, const std::size_t aligment) final {
-            // impl
-             return nullptr;
-        }
-        virtual void do_deallocate(void* const ptr,const std::size_t count) final {
-        // impl
-        }
+        void* start_ptr{ nullptr };
+        std::size_t head{ 0 };
+        std::size_t max_size{ 0 };
+    protected:
+        NO_DISCARD  virtual void* do_allocate(const std::size_t count, const std::size_t aligment) final;
+        virtual void do_deallocate(void* const ptr, const std::size_t count) final;
+        NO_DISCARD virtual bool do_is_equal(const allocation_strategy& that) const noexcept final;
+    public:
+        monotonic(std::size_t max_buffer, allocation_strategy *const upstream = nullptr);
+        monotonic(pma::alloc_option option,allocation_strategy *const upstream = nullptr);
+        void release();
     };
 }
 #endif
