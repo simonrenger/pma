@@ -17,7 +17,7 @@ NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, MAYBE_UNUS
     if (alignment != 0 && head % alignment != 0) {
         padding = pma::alignForwardAdjustment(currentAddress, alignment);
     }
-    if (head + padding + size > option().buffer_size) {
+    if (head + padding + size > option.buffer_size) {
         return nullptr;
     }
     head += padding;
