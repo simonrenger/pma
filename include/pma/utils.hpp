@@ -1,11 +1,14 @@
+#ifndef PMA_AS_UTILS_HPP_INCLUDED
+#define PMA_AS_UTILS_HPP_INCLUDED
+
 #include <cstdint>
 namespace pma {
     /// IMPORTANT: The alignment must be a power of 2!
     inline std::size_t alignForwardAdjustment(const std::size_t baseAddress, const std::size_t alignment)
     {
-        const std::size_t multiplier = (baseAddress / alignment) + 1;
-        const std::size_t alignedAddress = multiplier * alignment;
-        const std::size_t padding = alignedAddress - baseAddress;
+        const std::size_t multiplier{ (baseAddress / alignment) + 1 };
+        const std::size_t alignedAddress {multiplier * alignment };
+        const std::size_t padding { alignedAddress - baseAddress };
         return padding;
     }
 
@@ -22,8 +25,8 @@ namespace pma {
 
     inline std::uint8_t alignForwardAdjustmentWithHeader(const std::size_t baseAddress, const std::size_t alignment, const std::size_t headerSize)
     {
-        std::size_t padding = alignForwardAdjustment(baseAddress, alignment);
-        std::size_t neededSpace = headerSize;
+        std::size_t padding{ alignForwardAdjustment(baseAddress, alignment) };
+        std::size_t neededSpace { headerSize};
 
         if (padding < neededSpace) {
             // Header does not fit - Calculate next aligned address that header fits
@@ -41,3 +44,4 @@ namespace pma {
         return padding;
     }
 }
+#endif
