@@ -10,7 +10,7 @@
 #endif
 namespace pma {
 
-template <class T>
+template <typename T>
 class allocator {
 public:
     using _From_primary = allocator;
@@ -33,13 +33,15 @@ public:
     allocation_strategy * allocationStrategy {nullptr};
     public:
 
-    constexpr allocator() noexcept {}
+    constexpr allocator() noexcept = default;
     constexpr allocator(const allocator&) noexcept = default;
     template <class other>
     constexpr allocator(const allocator<other>&) noexcept {}
 
-    allocator(allocation_strategy* stratgey):allocationStrategy{stratgey} {};
-    allocator(allocation_strategy& stratgey):allocationStrategy{&stratgey} {};
+
+    allocator(allocation_strategy* const stratgey):allocationStrategy{stratgey} {};
+    allocator(allocation_strategy& const stratgey):allocationStrategy{&stratgey} {};
+
     void deallocate(T* const ptr, const std::size_t count) {
         if(allocationStrategy != nullptr){
             allocationStrategy->deallocate(ptr, sizeof(T) * count);
@@ -61,7 +63,12 @@ public:
             return  static_cast<T*>(allocationStrategy->allocate(sizeof(T) * count,alignof(T)));
         }else{
             return static_cast<T*>(std::malloc(sizeof(T) * count));
-        }        
+        }
+    }
+
+    NO_DISCARD allocation_strategy* strategy() const noexcept /* strengthened */ {
+        // retrieve this allocator's strategy
+        return allocationStrategy;
     }
 
 #if __cplusplus == 201402
@@ -91,7 +98,17 @@ public:
         return static_cast<size_t>(-1) / sizeof(T);
     }
 #endif
-};
+}; // end of alloctor class
+
+template <typename T1, typename T2>
+NO_DISCARD bool operator==(const pma::allocator<T1>& left, const pma::allocator<T2>& right) noexcept {
+    return *left.strategy() == *right.strategy();
+}
+
+template <typename T1, typename T2>
+NO_DISCARD bool operator!=(const pma::allocator<T1>& left, const pma::allocator<T2>& right) noexcept {
+    return !(left == right);
+}
 
 }  
 
