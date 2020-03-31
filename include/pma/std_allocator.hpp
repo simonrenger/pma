@@ -40,7 +40,7 @@ public:
 
 
     allocator(allocation_strategy* const stratgey):allocationStrategy{stratgey} {};
-    allocator(allocation_strategy& const stratgey):allocationStrategy{&stratgey} {};
+    allocator(allocation_strategy& stratgey):allocationStrategy{&stratgey} {};
 
     void deallocate(T* const ptr, const std::size_t count) {
         if(allocationStrategy != nullptr){
