@@ -10,10 +10,9 @@ astd::monotonic::monotonic(pma::alloc_option option,pma::allocation_strategy * c
     start_ptr = std::malloc(option.buffer_size);
 }
 
-NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, const std::size_t alignment) {
+NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t alignment) {
 
     std::size_t padding {0};
-    std::size_t paddedAddress{ 0 };
     const std::size_t currentAddress = (std::size_t)start_ptr + head;
     if (alignment != 0 && head % alignment != 0) {
         padding = pma::alignForwardAdjustment(currentAddress, alignment);
@@ -26,7 +25,7 @@ NO_DISCARD void* astd::monotonic::do_allocate(const std::size_t size, const std:
     head += size;
     return (void*)nextAddress;
 }
-void astd::monotonic::do_deallocate(void* const ptr, const std::size_t count)  {
+void astd::monotonic::do_deallocate(MAYBE_UNUSED void* const ptr, MAYBE_UNUSED const std::size_t count)  {
     // do nothing
 }
 

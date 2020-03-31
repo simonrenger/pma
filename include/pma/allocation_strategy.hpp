@@ -32,8 +32,8 @@ namespace pma{
         }
 
     protected:
-        NO_DISCARD  virtual void* do_allocate(const std::size_t size, const std::size_t aligment) = 0;
-        virtual void do_deallocate(void* const ptr,const std::size_t size) = 0;
+        NO_DISCARD  virtual void* do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t aligment) = 0;
+        virtual void do_deallocate(MAYBE_UNUSED void* const ptr, MAYBE_UNUSED const std::size_t size) = 0;
         NO_DISCARD virtual bool do_is_equal(const allocation_strategy& that) const noexcept = 0;
         allocation_strategy* const upstream_{ nullptr };
         pma::alloc_option option_{};

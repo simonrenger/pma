@@ -7,8 +7,8 @@ namespace astd{
         void* start_ptr{ nullptr };
         std::size_t head{ 0 };
     protected:
-        NO_DISCARD  virtual void* do_allocate(const std::size_t count, const std::size_t aligment) final;
-        virtual void do_deallocate(void* const ptr, const std::size_t count) final;
+        NO_DISCARD  virtual void* do_allocate(const std::size_t count, MAYBE_UNUSED const std::size_t aligment) final;
+        virtual void do_deallocate(MAYBE_UNUSED void* const ptr, MAYBE_UNUSED const std::size_t count) final;
         NO_DISCARD virtual bool do_is_equal(const allocation_strategy& that) const noexcept final;
     public:
         monotonic(std::size_t max_buffer, allocation_strategy *const upstream = nullptr);
