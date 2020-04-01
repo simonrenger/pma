@@ -6,12 +6,11 @@
 
 namespace astd{
     namespace details {
-        struct free_header {};
-        using node_ptr = utils::stack_linked_list<details::free_header>::node_ptr;
+        struct empty_header {};
     };
 class pool : public pma::allocation_strategy{
     void* start_ptr{ nullptr };
-    utils::stack_linked_list<details::free_header> free_list{};
+    utils::stack_linked_list<details::empty_header> free_list{};
 protected:
     NO_DISCARD  virtual void* do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t aligment) final;
     virtual void do_deallocate(void* const ptr, MAYBE_UNUSED const std::size_t count) final;

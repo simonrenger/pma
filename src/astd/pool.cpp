@@ -1,11 +1,14 @@
 #include <astd/pool.hpp>
 #include <pma/utils.hpp>
+#include <astd/utils/stack_linked_list.hpp>
 
 #include <cstdlib>
 #include <cassert>
 #if _DEBUG
 #include <iostream>
 #endif
+
+using node_ptr = astd::utils::stack_linked_list<astd::details::empty_header>::node_ptr;
 
 NO_DISCARD void* astd::pool::do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t aligment) {
 	#if _DEBUG
@@ -15,13 +18,13 @@ NO_DISCARD void* astd::pool::do_allocate(const std::size_t size, MAYBE_UNUSED co
 	#endif
 	if (size > option.chunck_size) return upstream->allocate(size, aligment);
 
-	details::node_ptr free_pos = free_list.pop();
+	node_ptr free_pos = free_list.pop();
 	assertm(free_pos != nullptr , "The pool allocator is full");
 	return free_pos;
 }
 void astd::pool::do_deallocate(void* const ptr, MAYBE_UNUSED const std::size_t size) {
 	if (size > option.chunck_size) return upstream->deallocate(ptr,size);
-	free_list.push(reinterpret_cast<details::node_ptr>(ptr));
+	free_list.push(reinterpret_cast<node_ptr>(ptr));
 }
 
 NO_DISCARD bool astd::pool::do_is_equal(const pma::allocation_strategy& that) const noexcept {
@@ -41,6 +44,6 @@ void astd::pool::release() {
 	const auto chuncks{ option.buffer_size / option.chunck_size };
 	for (auto i{ 0 }; i < chuncks; ++i) {
 		std::size_t address = reinterpret_cast<std::size_t>(start_ptr) + i * option.chunck_size;
-		free_list.push(reinterpret_cast<details::node_ptr>(address));
+		free_list.push(reinterpret_cast<node_ptr>(address));
 	}
 }
