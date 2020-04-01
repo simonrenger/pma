@@ -3,14 +3,24 @@
 
 #include <cstdlib>
 #include <cassert>
+#if _DEBUG
+#include <iostream>
+#endif
 
-NO_DISCARD void* astd::pool::do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t) {
-	assertm(size <= option.chunck_size, "size is bigger then chnuck");
+NO_DISCARD void* astd::pool::do_allocate(const std::size_t size, MAYBE_UNUSED const std::size_t aligment) {
+	#if _DEBUG
+		if (size > option.chunck_size) {
+			std::cout << "size is bigger then chnuck try to use upstream\n";
+		}
+	#endif
+	if (size > option.chunck_size) return upstream->allocate(size, aligment);
+
 	details::node_ptr free_pos = free_list.pop();
 	assertm(free_pos != nullptr , "The pool allocator is full");
 	return free_pos;
 }
-void astd::pool::do_deallocate(void* const ptr, MAYBE_UNUSED const std::size_t) {
+void astd::pool::do_deallocate(void* const ptr, MAYBE_UNUSED const std::size_t size) {
+	if (size > option.chunck_size) return upstream->deallocate(ptr,size);
 	free_list.push(reinterpret_cast<details::node_ptr>(ptr));
 }
 
